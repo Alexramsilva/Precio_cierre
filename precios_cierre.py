@@ -18,18 +18,15 @@ st.image("UNRC.png", caption="Universidad Nacional Rosario Castellanos", width=3
 st.set_page_config(page_title="Precio de Cierre Mensual", page_icon="📆", layout="centered")
 
 # --- Título e instrucciones ---
-st.title("Precio de Cierre - Último Día Hábil de Cada Mes")
+st.title("📊 Precio de Cierre - Último Día Hábil de Cada Mes")
 
 st.markdown("""
-Esta aplicación obtiene el **precio de cierre del último día hábil de cada mes**
+Esta aplicación obtiene el **precio de cierre del último día hábil de cada mes** 
 de los últimos **5 años**, usando datos de **Yahoo Finance**.
 
-💡 Ejemplos de claves de pizarra:
-- `AAPL` → Apple
-- `MSFT` → Microsoft
-- `^GSPC` → S&P 500
-- `AMXL.MX` → América Móvil
-- `CEMEXCPO.MX` → Cemex
+-Ejemplos de claves de pizarra:
+- `AMXL.MX` → América Móvil  
+- `CEMEXCPO.MX` → Cemex  
 """)
 
 # --- Entrada del usuario ---
@@ -52,9 +49,9 @@ if ticker:
             df_monthly = df_monthly[['Close']].dropna()
             df_monthly.index = df_monthly.index.strftime("%Y-%m-%d")
 
-            # Último dato disponible
+            # Asegurar que el último valor sea escalar
+            last_close = float(df_monthly["Close"].iloc[-1])
             last_date = df_monthly.index[-1]
-            last_close = df_monthly["Close"].iloc[-1]
 
             # Mostrar resultados
             st.success(f"**Último día hábil mensual:** {last_date}")
@@ -64,7 +61,7 @@ if ticker:
             st.line_chart(df_monthly["Close"], use_container_width=True)
 
             # Mostrar tabla de datos mensuales
-            with st.expander(" Ver datos mensuales"):
+            with st.expander("📅 Ver datos mensuales"):
                 st.dataframe(df_monthly.tail(12))
 
             # --- Generar CSV para descarga ---
