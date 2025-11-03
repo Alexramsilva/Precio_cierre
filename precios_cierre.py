@@ -61,7 +61,7 @@ if ticker:
             st.line_chart(df_monthly["Close"], use_container_width=True)
 
             # Mostrar tabla de datos mensuales
-            with st.expander("📅 Ver datos mensuales"):
+            with st.expander(" Ver datos mensuales"):
                 st.dataframe(df_monthly.tail(12))
 
             # --- Generar CSV para descarga ---
