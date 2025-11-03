@@ -15,7 +15,7 @@ import datetime as dt
 st.image("UNRC.png", caption="Universidad Nacional Rosario Castellanos", width=300)
 
 # --- Configuración de la página ---
-st.set_page_config(page_title="Precio de Cierre Mensual", page_icon="📆", layout="centered")
+st.set_page_config(page_title="Precio de Cierre Mensual", page_icon="", layout="centered")
 
 # --- Título e instrucciones ---
 st.title("📊 Precio de Cierre - Último Día Hábil de Cada Mes")
